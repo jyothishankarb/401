@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .converter {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        select {
+            width: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #convertedAmount {
+            background-color: lightcyan;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20vw;
+            border-radius: 20px;
+        }
+
+        .result {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="/dashboard">
+        <div class="converter">
+            <h1>Currency Converter</h1>
+            <div class="input-container">
+                <input type="number" id="amount" placeholder="Enter amount" name="amount" required>
+                <select id="fromCurrency" name="from">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="INR">INR</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <select id="toCurrency" name="to">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="INR">INR</option>
+                </select>
+            </div>
+            <button id="convertBtn" type="submit">Convert</button>
+        </div>
+        <div class="result">
+          <% var result = result !== null ? result : 10; %>
+          <% if (result !== null) { %>          
+                <div id="convertedAmount">
+                    <p>Conversion Result: <%= result %></p>
+                </div>
+            <% } %>
+        </div>
+    </form>
+</body>
+</html>
